@@ -148,6 +148,9 @@ class AlienInvasion:
             self._ship_hit()
             print("Ship hit!!!")
 
+        # Look for aliens hitting the bottom of the screen.
+        self._check_aliens_bottom()
+
     def _check_fleet_edges(self):
         """Respond appropriate.y if any aliens have reached an edge."""
         for alien in self.aliens.sprites():
@@ -176,6 +179,15 @@ class AlienInvasion:
 
         # Pause.
         sleep(0.5)
+
+    def _check_aliens_bottom(self):
+        """Check if any aliens have reached the bottom of the screen"""
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                #Treat this the same as if the ship got hit.
+                self._ship_hit()
+                break
 
 
 if __name__ == '__main__':
