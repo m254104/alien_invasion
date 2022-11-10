@@ -4,7 +4,7 @@ import sys
 
 pygame.init()
 
-screen = pygame.display.set_mode((500, 500))
+screen = pygame.display.set_mode((800, 700))
 star = pygame.image.load('images/laserYellow_burst.png')
 screen_rect = screen.get_rect()
 star_rect = star.get_rect()
@@ -21,3 +21,4 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
     draw_stars()
+    pygame.display.flip()
