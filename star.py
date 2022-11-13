@@ -1,24 +1,31 @@
 import pygame
 import sys
 
+from random import randint
 
 pygame.init()
 
 screen = pygame.display.set_mode((800, 700))
-star = pygame.image.load('images/laserYellow_burst.png')
+star = pygame.image.load('images/explosion3.png')
 screen_rect = screen.get_rect()
 star_rect = star.get_rect()
 
-space = screen_rect.width // star_rect.width
 
-def draw_stars():
-    for y in range(space):
-        for x in range(space):
-            screen.blit(star, (x * star_rect.width, y * star_rect.height))
+def draw_star():
+        screen.blit(star, (randint(0, 700), randint(0, 700)))
+
+x = 0
+while x < 100:
+    draw_star()
+    pygame.display.flip()
+    x += 1
+
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-    draw_stars()
     pygame.display.flip()
+
+
+
